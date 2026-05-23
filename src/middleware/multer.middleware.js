@@ -9,10 +9,10 @@ const storage = multer.diskStorage({
 
     filename: function (req, file, cb) {
         crypto.randomBytes(12, function (err, bytes) {
-            const fileName = bytes.toString('hex') + path.extname(file.filename)
+            const fileName = bytes.toString('hex') + path.extname(file.originalname)
             cb(null, fileName)
         })
     }
 })
 
-const upload = multer({ storage: storage })
+export const upload = multer({ storage: storage })
